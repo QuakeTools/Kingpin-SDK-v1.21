@@ -1,0 +1,28 @@
+// This is an example kpdata script, used to convert a bunch of .md2 files into a single .mdx file.
+//
+// A line that starts with // is considered a comment, and ignored by kpdata.
+//
+// To create a .mdx file, you first need to create a bunch of .md2 files (standard Quake2 models),
+//	you would then use kpdata, to create the .mdx file, using the $mdx command.
+//
+// The format of the $mdx command is:
+//
+//	$mdx (mdx_name) -objects {md2 md2 ..}
+//
+// So, for example..
+
+$mdx bitch_body -objects bitch_rarm bitch_larm bitch_torso bitch_rhand bitch_lhand
+
+// Would create a file called bitch_body.mdx in the current directory, composed of the given .md2 files.
+//
+// Each .md2 files becomes an object with it's own bounding box, within the .mdx file. Assuming
+//	the game code is written to use those bounding boxes, you will be able to shoot individual limbs
+//	on the new character.
+//
+// You can create an .mdx made of just a single .md2 file, although it will behave exactly the same as
+//	the .md2 file. Kingpin supports the .md2 file format also, so doing this would be pointless.
+//
+// NOTE: if you intend on using this process to create a PPM (plugin player model) for Kingpin, your
+//	model MUST consist of the same models that exist in the existing player folders
+//	(head.mdx, body.mdx, legs.mdx). Also, player models must not contain any skins explicitly listed
+//	inside the .mdx. Doing so will cause problems within the game.
